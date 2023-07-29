@@ -1,24 +1,50 @@
+import { Button } from "../../../common/button/button"
+import editingIcon from '../../../../assets/editing.png'
+import archiveIcon from '../../../../assets/archive.png'
+import deleteIcon from '../../../../assets/delete.png'
+import styles from './table-item.module.scss'
+import clsx from "clsx"
+import { ButtonsWrapper } from "../../../common/buttons-wrapper/buttons-wrapper"
+type TTableItemProps = {
+  src: string,
+  title: string,
+  createdAt: string,
+  category: string,
+  content: string[],
+  dates: string[],
+  status?: 'active' | 'archived',
+}
 
-const TableItem: React.FC = () => {
+const TableItem: React.FC<TTableItemProps> = ({ title, category, content, dates, src, createdAt }) => {
   return (
-    <li className="table__item item">
-      <div className="item__box">
-        <div className="item__img-container">
-          <span className="item__img-wrapper">
-            <img className="item__img button--light" src="./assets/lightbulb.png"
-              alt="" /></span>
-          <span>Shopping list</span>
-        </div>
-        <p className="item__createdAt">April,20 2021</p>
-        <p className="item__category">task</p>
-        <p className="item__content">tomatoes</p>
-        <p className="item__dates">3/5/2021</p>
-        <div className="item__buttons buttons__wrapper">
-          <button className="button "><img src="./assets/editing.png" alt="" /></button>
-          <button className="button "><img src="./assets/archive.png" alt="" /></button>
-          <button className="button"><img src="./assets/delete.png" alt="" /></button>
-        </div>
+    <li className={styles.item}>
+
+      <div className={styles.img__container}>
+        <span className={styles.img__wrapper}>
+          <img width={30}
+            className={clsx(styles.item__img, 'button--light')}
+            src={src}
+            alt={category} />
+        </span>
+        <span>{title}</span>
       </div>
+      <p className="item__createdAt">{createdAt}</p>
+      <p className="item__category">{category}</p>
+      <p className="item__content">{content.join(' ,')}</p>
+      <p className="item__dates">{dates.join(' ,')}</p>
+
+      <ButtonsWrapper>
+        <Button type="button">
+          <img src={editingIcon} alt="editingIcon" />
+        </Button>
+        <Button type="button">
+          <img src={archiveIcon} alt="archiveIcon" />
+        </Button>
+        <Button type="button">
+          <img src={deleteIcon} alt="deleteIcon" />
+        </Button>
+        </ButtonsWrapper>
+
     </li>
   )
 }

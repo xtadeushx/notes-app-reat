@@ -2,6 +2,7 @@ import deleteIcon from '../../../../assets/delete.png';
 import archiveIcon from '../../../../assets/archive.png';
 import styles from './table-header.module.scss';
 import { Button } from '../../../common/button/button';
+import { ButtonsWrapper } from '../../../common/buttons-wrapper/buttons-wrapper';
 
 const TableHeader: React.FC = () => {
   return (
@@ -11,14 +12,15 @@ const TableHeader: React.FC = () => {
       <p className={styles.header__description}>Category</p>
       <p className={styles.header__description}>Content</p>
       <p className={styles.header__description}>Dates</p>
-      <div className={styles.buttons__wrapper}>
+
+      <ButtonsWrapper>
         <Button type="button" className='button--light'>
           <img src={deleteIcon} alt="" />
         </Button>
         <Button type="button" className='button--light'>
           <img src={archiveIcon} alt="" />
         </Button>
-      </div>
+      </ButtonsWrapper>
     </div>
   );
 };

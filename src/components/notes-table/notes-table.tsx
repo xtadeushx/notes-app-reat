@@ -9,7 +9,7 @@ const NotesTable: React.FC = () => {
     <div className={styles.table}>
       <TableHeader />
       <TableList />
-      <ul className="table__list">
+      {/* <ul className="table__list">
         <li className="table__item item">
           <div className="item__box">
             <div className="item__img-container">
@@ -29,7 +29,7 @@ const NotesTable: React.FC = () => {
             </div>
           </div>
         </li>
-      </ul>
+      </ul> */}
     </div>
   )
 }
