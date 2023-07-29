@@ -3,7 +3,7 @@ import { Header } from "./layout/header/header"
 import { HomePage } from "./pages/home-page/home-page"
 
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ function App() {
   )
 }
 
-export default App
+export { App };
