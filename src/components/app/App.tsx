@@ -1,9 +1,10 @@
+import Header from "../header/header"
 
 
 function App() {
   return (
     <>
-      Hello world
+      <Header />
     </>
   )
 }
