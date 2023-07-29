@@ -6,6 +6,7 @@
 
 html {
   font-size: 10px;
+  width: 100%;
 }
 
 body {
@@ -14,9 +15,9 @@ body {
   font-size: 1.6rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: stretch;
   min-height: 100vh;
+  width: 100%;
   padding: 15px;
 }
 
@@ -24,4 +25,8 @@ body {
   max-width: 90%;
   width: 100%;
   margin: 0 auto;
+}
+
+.button--light {
+  filter: invert(95%) sepia(100%) saturate(0%) hue-rotate(106deg) brightness(105%) contrast(104%);
 }

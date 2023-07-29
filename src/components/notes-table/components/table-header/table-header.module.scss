@@ -1,0 +1,21 @@
+.table__header {
+  padding: 5px 15px;
+  width: 100%;
+  background-color: var(--header-background-color);
+  color: var(--primary-color);
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  align-items: center;
+
+}
+
+.buttons__wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 5px
+}
+
+.header__description {}
