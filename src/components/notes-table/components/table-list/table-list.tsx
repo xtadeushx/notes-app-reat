@@ -1,6 +1,7 @@
 import { TableItem } from '../table-item/table-item';
-import styles from './table-list.module.scss'
-import { DATA } from '../../../../model/data'
+import styles from './table-list.module.scss';
+import { DATA } from '../../../../model/data';
+
 const TableList: React.FC = () => {
   const NOTES = DATA
   return (
@@ -13,7 +14,7 @@ const TableList: React.FC = () => {
 
           }))
           :
-          <p>Your list of notes are empty</p>
+          <p>Your list of notes are empty. PLease add New NOTES</p>
       }
     </ul>
   )

@@ -26,11 +26,11 @@ const TableItem: React.FC<TTableItemProps> = ({ title, category, content, dates,
             src={src}
             alt={category} />
         </span>
-        <span>{title}</span>
+        <span className={styles.item__title}>{title}</span>
       </div>
       <p className="item__createdAt">{createdAt}</p>
-      <p className="item__category">{category}</p>
-      <p className="item__content">{content.join(' ,')}</p>
+      <p className={styles.item__category}>{category}</p>
+      <p className={styles.item__content}>{content.join(' ,')}</p>
       <p className="item__dates">{dates.join(' ,')}</p>
 
       <ButtonsWrapper>
@@ -43,7 +43,7 @@ const TableItem: React.FC<TTableItemProps> = ({ title, category, content, dates,
         <Button type="button">
           <img src={deleteIcon} alt="deleteIcon" />
         </Button>
-        </ButtonsWrapper>
+      </ButtonsWrapper>
 
     </li>
   )
