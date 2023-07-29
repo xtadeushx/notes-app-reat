@@ -1,15 +1,17 @@
+import { useSelector } from 'react-redux';
 import { TableItem } from '../table-item/table-item';
 import styles from './table-list.module.scss';
-import { DATA } from '../../../../model/data';
+import { RootState } from '../../../../redux/store';
 
 const TableList: React.FC = () => {
-  const NOTES = DATA
+  const { notesList } = useSelector((state: RootState) => state.notes)
+
   return (
     <ul className={styles.table__list}>
       {
-        (NOTES && NOTES.length > 0)
+        (notesList && notesList.length > 0)
           ?
-          (NOTES.map(note => {
+          (notesList.map(note => {
             return <TableItem key={note.id} {...note} />
 
           }))
