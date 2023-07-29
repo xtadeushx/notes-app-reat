@@ -5,6 +5,7 @@ import deleteIcon from '../../../../assets/delete.png'
 import styles from './table-item.module.scss'
 import clsx from "clsx"
 import { ButtonsWrapper } from "../../../common/buttons-wrapper/buttons-wrapper"
+import Image from "../../../common/image/image"
 type TTableItemProps = {
   src: string,
   title: string,
@@ -21,10 +22,12 @@ const TableItem: React.FC<TTableItemProps> = ({ title, category, content, dates,
 
       <div className={styles.img__container}>
         <span className={styles.img__wrapper}>
-          <img width={30}
-            className={clsx(styles.item__img, 'button--light')}
+          <Image
             src={src}
-            alt={category} />
+            alt={category}
+            width={30}
+            className={clsx(styles.item__img, 'button--light')}
+          />
         </span>
         <span className={styles.item__title}>{title}</span>
       </div>
@@ -35,13 +38,22 @@ const TableItem: React.FC<TTableItemProps> = ({ title, category, content, dates,
 
       <ButtonsWrapper>
         <Button type="button">
-          <img src={editingIcon} alt="editingIcon" />
+          <Image
+            alt='editing icon'
+            src={editingIcon}
+          />
         </Button>
         <Button type="button">
-          <img src={archiveIcon} alt="archiveIcon" />
+          <Image
+            alt='archive icon'
+            src={archiveIcon}
+          />
         </Button>
         <Button type="button">
-          <img src={deleteIcon} alt="deleteIcon" />
+          <Image
+            alt='delete icon'
+            src={deleteIcon}
+          />
         </Button>
       </ButtonsWrapper>
 

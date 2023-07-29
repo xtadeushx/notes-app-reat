@@ -13,7 +13,6 @@ const TableList: React.FC = () => {
           ?
           (notesList.map(note => {
             return <TableItem key={note.id} {...note} />
-
           }))
           :
           <p>Your list of notes are empty. PLease add New NOTES</p>

@@ -1,0 +1,15 @@
+.input {
+  width: 100%;
+  padding: 5px 10px;
+  margin: 10px 0px 10px 0px;
+  display: block;
+}
+
+.input input::placeholder {
+  color: var(--color-blue-400);
+  opacity: 0.4;
+}
+
+.label {
+  width: 100%;
+}

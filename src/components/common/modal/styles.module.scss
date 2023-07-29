@@ -1,0 +1,52 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  background-color: var(--overlay-color);
+}
+
+.content {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.28rem;
+  background: #fff;
+  width: 100%;
+}
+
+.centered {
+  align-items: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .content {
+    width: 95%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .content {
+    width: 88%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .content {
+    width: 850px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .content {
+    width: 900px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .content {
+    width: 950px;
+  }
+}

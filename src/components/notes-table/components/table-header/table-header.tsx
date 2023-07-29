@@ -3,6 +3,7 @@ import archiveIcon from '../../../../assets/archive.png';
 import styles from './table-header.module.scss';
 import { Button } from '../../../common/button/button';
 import { ButtonsWrapper } from '../../../common/buttons-wrapper/buttons-wrapper';
+import Image from '../../../common/image/image';
 
 const TableHeader: React.FC = () => {
   return (
@@ -15,10 +16,16 @@ const TableHeader: React.FC = () => {
 
       <ButtonsWrapper>
         <Button type="button" className='button--light'>
-          <img src={deleteIcon} alt="" />
+          <Image
+            alt='delete icon'
+            src={deleteIcon}
+          />
         </Button>
         <Button type="button" className='button--light'>
-          <img src={archiveIcon} alt="" />
+          <Image
+            alt='archive icon'
+            src={archiveIcon}
+          />
         </Button>
       </ButtonsWrapper>
     </div>
