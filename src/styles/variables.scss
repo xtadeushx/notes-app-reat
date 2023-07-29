@@ -1,6 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
 :root {
-  --blue: #2185d0;
-  --teal: #00b5ad;
-  --white: #fff;
-  --light-shadow: rgba(34 36 38 / 15%);
+  --primary-color: #fff;
+  --secondary-color: #000000;
+  --background-color: #ebe8e8;
+  --header-background-color: #5e5c5c;
+  --secondary-background-color: rgb(186 225 243);
+  --primary-font: 'Arial';
+  --secondary-font: 'Montserrat', sans-serif;
 }
