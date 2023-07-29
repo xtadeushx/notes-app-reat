@@ -1,7 +1,7 @@
 
 import styles from './header.module.scss';
 
-const Header = () => {
+const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
@@ -10,4 +10,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export { Header };

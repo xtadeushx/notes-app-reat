@@ -1,0 +1,11 @@
+.footer {
+  justify-content: end;
+  width: 100%;
+}
+
+.footer__link {
+  display: block;
+  text-align: center;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
