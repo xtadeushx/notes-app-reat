@@ -1,8 +1,8 @@
 enum IconsSrc {
-  TASK = './assets/shopping-cart.png',
-  THOUGHTS = './assets/thought.png',
-  IDEA = './assets/lightbulb.png',
-  QUOTE = './assets/quote.png',
+  TASK = 'src/assets/shopping-cart.png',
+  THOUGHTS = 'src/assets/thought.png',
+  IDEA = 'src/assets/lightbulb.png',
+  QUOTE = 'src/assets/quote.png',
 }
 
 export { IconsSrc };

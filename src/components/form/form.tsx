@@ -5,7 +5,11 @@ import { Button } from '../common/button/button';
 import { Input } from '../common/input/input';
 import { useState } from '../../hooks/hooks';
 import { useDispatch } from 'react-redux';
-
+import { v4 as uuidv4 } from 'uuid';
+import { IconsSrc } from '../../common/enums/icons-src';
+import { NotesStatus } from '../../common/enums/notes-status';
+import { formatDateLong } from '../../utils/dateHelper';
+import { addNote } from '../../redux/slices/notes-slice';
 const SELECT__OPTIONS = [
   { id: 1, value: 'task', text: 'Task' },
   { id: 2, value: 'random thoughts', text: 'Random Thoughts' },
@@ -21,8 +25,9 @@ type Values = {
   category: string,
   content: string,
   date: string,
-
 }
+
+type IconsSrcType = keyof typeof IconsSrc;
 const Form: React.FC<IFormProps> = ({ mode }) => {
   const dispatch = useDispatch();
 
@@ -34,7 +39,17 @@ const Form: React.FC<IFormProps> = ({ mode }) => {
   });
   const handleFormSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    console.log(values)
+    const newNote = {
+      id: uuidv4(),
+      src: IconsSrc[values.category as IconsSrcType] || IconsSrc.TASK,
+      title: values.name,
+      createdAt: formatDateLong(new Date(Date.now())),
+      category: values.category,
+      content: [values.content],
+      dates: [],
+      status: NotesStatus.ACTIVE
+    }
+    dispatch(addNote(newNote));
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -74,7 +89,6 @@ const Form: React.FC<IFormProps> = ({ mode }) => {
           type="date"
           value={values.date}
           onChange={handleChange}
-          name="date"
           required
           placeholder="Note content"
           text="Dates"
