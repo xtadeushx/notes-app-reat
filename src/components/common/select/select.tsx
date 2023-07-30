@@ -1,6 +1,5 @@
 import styles from './select.module.scss';
 import { TSelectProps } from './types';
-import clsx from 'clsx';
 
 const Select = ({
   name,

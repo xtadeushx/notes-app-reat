@@ -5,12 +5,16 @@ import { TableHeader } from './components/table-header/table-header';
 import { TableList } from './components/table-list/table-list';
 import styles from './notes-table.module.scss';
 
-const NotesTable: React.FC = () => {
+interface INoteTable {
+  handelOpen: () => void;
+}
+
+const NotesTable: React.FC<INoteTable> = ({ handelOpen }) => {
   return (
     <div className={styles.table}>
       <TableHeader />
       <TableList />
-      <Button type='button' className={styles.add__note}>
+      <Button type='button' className={styles.add__note} onClick={handelOpen}>
         Create note
       </Button>
     </div>
