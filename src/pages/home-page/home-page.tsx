@@ -18,9 +18,10 @@ const HomePage: React.FC = () => {
       <Modal
         isCentered
         isOpen={isOpen}
-        onClose={() => setOpen((prev) => !prev)}
+        onClose={handelOpen}
+
       >
-        <Form />
+        <Form mode={'edit'} handelOpen={handelOpen} />
       </Modal>
     </>
   );

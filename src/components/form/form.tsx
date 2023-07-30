@@ -18,7 +18,8 @@ const SELECT__OPTIONS = [
 ];
 
 interface IFormProps {
-  mode: 'edit' | 'create'
+  mode: 'edit' | 'create',
+  handelOpen: () => void
 }
 type Values = {
   name: string,
@@ -28,7 +29,7 @@ type Values = {
 }
 
 type IconsSrcType = keyof typeof IconsSrc;
-const Form: React.FC<IFormProps> = ({ mode }) => {
+const Form: React.FC<IFormProps> = ({ mode, handelOpen }) => {
   const dispatch = useDispatch();
 
   const [values, setValues] = useState<Values>({
@@ -50,6 +51,7 @@ const Form: React.FC<IFormProps> = ({ mode }) => {
       status: NotesStatus.ACTIVE
     }
     dispatch(addNote(newNote));
+    handelOpen();
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [event.target.name]: event.target.value });
