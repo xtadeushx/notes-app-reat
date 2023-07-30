@@ -5,6 +5,7 @@ import { useEffect, useMemo } from '../../../hooks/hooks';
 
 import styles from './styles.module.scss';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Portal: FC<any> = ({ children }) => {
   const portalContainer = useMemo(() => {
     const el = document.createElement('div');

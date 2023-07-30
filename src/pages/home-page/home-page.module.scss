@@ -6,3 +6,11 @@
   align-items: start;
   min-height: 85vh;
 }
+
+.modal-active {
+  display: block;
+}
+
+.modal-hide {
+  display: none;
+}
