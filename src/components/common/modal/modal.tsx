@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { useModal } from './hooks/hooks.js';
 
 import { Portal } from '../../../components/common/portal/portal';
-import styles from './styles.module.scss';
+import styles from './modal.module.scss';
 import classNames from 'classnames';
 
 type TModalProps = {

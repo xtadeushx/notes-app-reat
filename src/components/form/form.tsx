@@ -1,32 +1,90 @@
-import React from 'react'
+import React from 'react';
+import styles from './form.module.scss';
+import Select from '../common/select/select';
+import { Button } from '../common/button/button';
+import { Input } from '../common/input/input';
+import { useState } from '../../hooks/hooks';
+import { useDispatch } from 'react-redux';
 
-const Form: React.FC = () => {
-  return (
-    <form action="#" className="form" id="form">
-      <label className="label">
-        Name
-        <input type="text" name="title" placeholder="Note name" className="input" value="" id="inputName" required
-          minLength={5} />
-      </label>
+const SELECT__OPTIONS = [
+  { id: 1, value: 'task', text: 'Task' },
+  { id: 2, value: 'random thoughts', text: 'Random Thoughts' },
+  { id: 3, value: 'idea', text: 'Idea' },
+  { id: 4, value: 'quote', text: 'Quote' },
+];
 
-      <select id="select" className="select" name="category">
-        <option value="task" selected>Task</option>
-        <option value="random thoughts">Random Thoughts</option>
-        <option value="idea">Idea</option>
-        <option value="quote">Quote</option>
-      </select>
-      <label className="label">
-        Content
-        <input type="text" name="content" placeholder="Note content" className="input" value="" id="inputContent" required
-          minLength={5} />
-      </label>
-      <label className="label" id="dateLabel">
-        Dates
-        <input type="date" name="date" className="input" id="inputDate" value="" />
-      </label>
-      <button type="submit" className="add-note__button" id="add-note__button">add note</button>
-    </form>
-  )
+interface IFormProps {
+  mode: 'edit' | 'create'
 }
+type Values = {
+  name: string,
+  category: string,
+  content: string,
+  date: string,
+
+}
+const Form: React.FC<IFormProps> = ({ mode }) => {
+  const dispatch = useDispatch();
+
+  const [values, setValues] = useState<Values>({
+    name: "",
+    category: "",
+    content: "",
+    date: ""
+  });
+  const handleFormSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+    console.log(values)
+  };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValues({ ...values, [event.target.name]: event.target.value });
+  }
+
+  return (
+    <form className={styles.form} onSubmit={handleFormSubmit}>
+      <Input
+        type="text"
+        value={values.name}
+        onChange={handleChange}
+        name="name"
+        required
+        minLength={5}
+        placeholder="Note name"
+        text="Name"
+
+      />
+      <Select
+        title="Category"
+        optionList={SELECT__OPTIONS}
+        name="category"
+        value={values.category}
+        onChange={handleChange} />
+      <Input
+        type="text"
+        value={values.content}
+        onChange={handleChange}
+        name="content"
+        required
+        minLength={5}
+        placeholder="Note content"
+        text="Content"
+      />
+      {mode === "create" ?
+        <Input
+          type="date"
+          value={values.date}
+          onChange={handleChange}
+          name="date"
+          required
+          placeholder="Note content"
+          text="Dates"
+        /> :
+        null}
+      <Button type="submit" className={styles.add__note}>
+        {mode === "create" ? 'Add note' : 'Edit note'}
+      </Button>
+    </form>
+  );
+};
 
 export { Form };

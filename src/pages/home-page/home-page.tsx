@@ -6,8 +6,8 @@ import styles from './home-page.module.scss';
 import { useState } from 'react';
 
 const HomePage: React.FC = () => {
-  const [isOpen, setOpen] = useState(false)
-  const handelOpen = () => setOpen(prev => !prev)
+  const [isOpen, setOpen] = useState(false);
+  const handelOpen = () => setOpen((prev) => !prev);
   return (
     <>
       <main className={styles.main}>
@@ -15,14 +15,15 @@ const HomePage: React.FC = () => {
           <NotesTable handelOpen={handelOpen} />
         </div>
       </main>
-      <Modal isCentered isOpen={isOpen} onClose={() => setOpen(prev => !prev)}
+      <Modal
+        isCentered
+        isOpen={isOpen}
+        onClose={() => setOpen((prev) => !prev)}
       >
         <Form />
-
-      </Modal >
+      </Modal>
     </>
+  );
+};
 
-  )
-}
-
-export { HomePage }
+export { HomePage };

@@ -3,22 +3,21 @@ import { TSelectProps } from './types';
 
 const Select = ({
   name,
-  dataTestId,
-  children,
+  title,
   optionList = [],
   value,
   onchange,
   ...rest
 }: TSelectProps) => {
   return (
-    <label className={styles['select']}>
-      {children}
+    <label className={styles['label']}>
+      {title}
       <select
-        data-test-id={dataTestId}
         value={value}
         name={name}
         onChange={onchange}
         {...rest}
+        className={styles['select']}
       >
         {optionList.map((el) => {
           return (

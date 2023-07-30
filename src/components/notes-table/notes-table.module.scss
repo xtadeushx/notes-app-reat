@@ -7,7 +7,7 @@
   cursor: pointer;
   justify-content: end;
   margin-top: 10px;
-  border: 1px solid var(--header-background-color);
+  border: 1px solid var(--header-background-color) !important;
   width: fit-content;
   border-radius: 5px;
   color: var(--header-background-color);

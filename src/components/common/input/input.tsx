@@ -4,20 +4,18 @@ import styles from './input.module.scss';
 import { TInputProps } from './types';
 
 const Input: FC<TInputProps> = ({
-  dataTestId,
   name,
   type = 'text',
   required = true,
   value,
   onChange,
-  children,
+  text,
   ...rest
 }) => {
   return (
     <label className={styles.label} >
-      {children}
+      {text}
       < input
-        data-test-id={dataTestId}
         type={type}
         name={name}
         required={required}
@@ -30,4 +28,4 @@ const Input: FC<TInputProps> = ({
   );
 };
 
-export default Input;
+export { Input };

@@ -1,10 +1,12 @@
-import { TSelectorList } from '../../trip/components/constants/type';
 
 export type TSelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
   name: string;
-  dataTestId: string;
-  children: React.ReactNode;
-  optionList: TSelectorList[];
-  value: string;
-  onchange: any;
+  optionList: ISelectOption[];
+  value?: string;
+  onchange?: () => void;
+  title: string
 };
+
+interface ISelectOption {
+  id: number, value: string, text: string
+}
