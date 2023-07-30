@@ -5,13 +5,21 @@ import { Button } from '../../../common/button/button';
 import { ButtonsWrapper } from '../../../common/buttons-wrapper/buttons-wrapper';
 import { Image } from '../../../common/image/image';
 import { useDispatch } from 'react-redux';
-import { deleteAllNotes } from '../../../../redux/slices/notes-slice';
+import { useState } from 'react'
+import { changeAllNotesStatus, deleteAllNotes } from '../../../../redux/slices/notes-slice';
+import { TStatus } from '../../../../common/types/note.type';
+import { NotesStatus } from '../../../../common/enums/notes-status';
 
 const TableHeader: React.FC = () => {
+  const [currentStatus, setCurrentStatus] = useState<TStatus>(NotesStatus.ARCHIVED)
   const dispatch = useDispatch();
 
   const handelDeleteAllNotes = () => {
     dispatch(deleteAllNotes());
+  };
+  const handelArchiveAllNotes = () => {
+    dispatch(changeAllNotesStatus(currentStatus));
+    setCurrentStatus(prev => prev === NotesStatus.ACTIVE ? NotesStatus.ARCHIVED : NotesStatus.ACTIVE);
   };
   return (
     <div className={styles.table__header}>
@@ -22,8 +30,11 @@ const TableHeader: React.FC = () => {
       <p className={styles.header__description}>Dates</p>
 
       <ButtonsWrapper>
-        <Button type="button" className="button--light">
+        <Button type="button" className="button--light"
+          onClick={handelArchiveAllNotes}
+        >
           <Image alt="archive icon" src={archiveIcon} />
+
         </Button>
         <Button
           type="button"

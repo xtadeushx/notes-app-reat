@@ -7,6 +7,7 @@ export interface INote {
   category: string,
   content: string[],
   dates: string[],
-  status: 'active' | 'archived',
+  status: TStatus,
 }
 
+export type TStatus = 'active' | 'archived'

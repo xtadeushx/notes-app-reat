@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { INote } from "../../common/types/note.type";
+import { INote, TStatus } from "../../common/types/note.type";
 import { NotesStatus } from "../../common/enums/notes-status";
 
 export interface INotesInitialState {
@@ -105,10 +105,16 @@ export const noteSlice = createSlice({
         } else {
           return note;
         }
+      })
+    },
+
+    changeAllNotesStatus: (state, action: PayloadAction<TStatus>) => {
+      state.notesList = state.notesList.map(note => {
+        return { ...note, status: action.payload };
       });
     }
   }
 })
 
-export const { addNote, deleteNote, deleteAllNotes, changeNoteStatus } = noteSlice.actions
+export const { addNote, deleteNote, deleteAllNotes, changeNoteStatus, changeAllNotesStatus } = noteSlice.actions
 export default noteSlice.reducer
