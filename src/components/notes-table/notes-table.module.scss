@@ -10,6 +10,8 @@
   border: 1px solid var(--header-background-color);
   width: fit-content;
   border-radius: 5px;
+  color: var(--header-background-color);
+  ;
 
   &:hover {
     background-color: #c5c4c4;
