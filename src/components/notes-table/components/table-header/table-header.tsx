@@ -10,6 +10,8 @@ import { changeAllNotesStatus, deleteAllNotes } from '../../../../redux/slices/n
 import { TStatus } from '../../../../common/types/note.type';
 import { NotesStatus } from '../../../../common/enums/notes-status';
 
+
+
 const TableHeader: React.FC = () => {
   const [currentStatus, setCurrentStatus] = useState<TStatus>(NotesStatus.ARCHIVED)
   const dispatch = useDispatch();

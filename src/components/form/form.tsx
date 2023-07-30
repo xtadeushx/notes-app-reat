@@ -86,7 +86,7 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen }) => {
         placeholder="Note content"
         text="Content"
       />
-      {mode === "create" ?
+      {mode === "edit" ?
         <Input
           type="date"
           value={values.date}

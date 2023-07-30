@@ -7,21 +7,22 @@ import { useState } from 'react';
 
 const HomePage: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
+  const [mode, setMode] = useState<'edit' | 'create'>('create');
   const handelOpen = () => setOpen((prev) => !prev);
+  const handelMode = (currentMode: 'edit' | 'create') => setMode(currentMode);
   return (
     <>
       <main className={styles.main}>
         <div className="container">
-          <NotesTable handelOpen={handelOpen} />
+          <NotesTable handelOpen={handelOpen} handelMode={handelMode} />
         </div>
       </main>
       <Modal
         isCentered
         isOpen={isOpen}
         onClose={handelOpen}
-
       >
-        <Form mode={'edit'} handelOpen={handelOpen} />
+        <Form mode={mode} handelOpen={handelOpen} />
       </Modal>
     </>
   );

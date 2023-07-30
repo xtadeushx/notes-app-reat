@@ -7,14 +7,18 @@ import styles from './notes-table.module.scss';
 
 interface INoteTable {
   handelOpen: () => void;
+  handelMode: (mode: 'edit' | 'create') => void;
 }
 
-const NotesTable: React.FC<INoteTable> = ({ handelOpen }) => {
+const NotesTable: React.FC<INoteTable> = ({ handelOpen, handelMode }) => {
   return (
     <div className={styles.table}>
       <TableHeader />
-      <TableList />
-      <Button type='button' className={styles.add__note} onClick={handelOpen}>
+      <TableList handelMode={handelMode} handelOpen={handelOpen} />
+      <Button type='button' className={styles.add__note} onClick={() => {
+        handelOpen();
+        handelMode('create');
+      }} >
         Create note
       </Button>
     </div>

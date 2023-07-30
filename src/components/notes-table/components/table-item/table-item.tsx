@@ -26,6 +26,9 @@ type TTableItemProps = {
   content: string[];
   dates: string[];
   status?: 'active' | 'archived';
+  handelMode: (mode: 'edit' | 'create') => void;
+  handelOpen: () => void;
+
 };
 
 const TableItem: React.FC<TTableItemProps> = ({
@@ -37,10 +40,16 @@ const TableItem: React.FC<TTableItemProps> = ({
   createdAt,
   id,
   status,
+  handelMode,
+  handelOpen
 }) => {
   const dispatch = useDispatch();
   const handleDeleteItem = (id: number) => dispatch(deleteNote(id));
   const handelNoteStatus = (id: number) => dispatch(changeNoteStatus(id));
+  const handelEditItem = () => {
+    handelMode('edit');
+    handelOpen();
+  };
 
   return (
     <li
@@ -66,7 +75,7 @@ const TableItem: React.FC<TTableItemProps> = ({
       <p className="item__dates">{dates.join(' ,')}</p>
 
       <ButtonsWrapper>
-        <Button type="button">
+        <Button type="button" onClick={handelEditItem}>
           <Image alt="editing icon" src={editingIcon} />
         </Button>
         <Button type="button" onClick={() => handelNoteStatus(id)}>
