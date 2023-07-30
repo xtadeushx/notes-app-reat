@@ -1,7 +1,8 @@
 import { FC } from 'react';
 
-import styles from './input.module.scss';
 import { TInputProps } from './types';
+
+import styles from './input.module.scss';
 
 const Input: FC<TInputProps> = ({
   name,

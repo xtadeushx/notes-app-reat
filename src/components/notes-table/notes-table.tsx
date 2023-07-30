@@ -1,6 +1,6 @@
 
 
-import { CreateMode } from '../../common/enums/create-mode';
+import { CreateMode } from '../../common/enums/enums';
 import { TDevelopMode } from '../../common/types/note.type';
 import { Button } from '../common/button/button';
 import { TableHeader } from './components/table-header/table-header';

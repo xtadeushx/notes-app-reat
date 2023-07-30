@@ -1,13 +1,12 @@
-import styles from './image.module.scss';
-import { TImageProps } from './types';
 import clsx from 'clsx';
+import { TImageProps } from './types';
+import styles from './image.module.scss';
 
 const Image = ({
   alt,
   className,
   src,
   width,
-
 }: TImageProps) => (
   <img
     className={clsx(
