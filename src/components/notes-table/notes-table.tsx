@@ -1,5 +1,7 @@
 
 
+import { CreateMode } from '../../common/enums/create-mode';
+import { TDevelopMode } from '../../common/types/note.type';
 import { Button } from '../common/button/button';
 import { TableHeader } from './components/table-header/table-header';
 import { TableList } from './components/table-list/table-list';
@@ -7,7 +9,7 @@ import styles from './notes-table.module.scss';
 
 interface INoteTable {
   handelOpen: () => void;
-  handelMode: (mode: 'edit' | 'create') => void;
+  handelMode: (mode: TDevelopMode) => void;
 }
 
 const NotesTable: React.FC<INoteTable> = ({ handelOpen, handelMode }) => {
@@ -17,7 +19,7 @@ const NotesTable: React.FC<INoteTable> = ({ handelOpen, handelMode }) => {
       <TableList handelMode={handelMode} handelOpen={handelOpen} />
       <Button type='button' className={styles.add__note} onClick={() => {
         handelOpen();
-        handelMode('create');
+        handelMode(CreateMode.CREATE);
       }} >
         Create note
       </Button>

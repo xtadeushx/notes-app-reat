@@ -1,3 +1,5 @@
+import { CreateMode } from '../../common/enums/create-mode';
+import { TDevelopMode } from '../../common/types/note.type';
 import { Modal } from '../../components/common/modal/modal';
 import { Form } from '../../components/form/form';
 import { NotesTable } from '../../components/notes-table/notes-table';
@@ -7,9 +9,9 @@ import { useState } from 'react';
 
 const HomePage: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
-  const [mode, setMode] = useState<'edit' | 'create'>('create');
+  const [mode, setMode] = useState<TDevelopMode>(CreateMode.CREATE);
   const handelOpen = () => setOpen((prev) => !prev);
-  const handelMode = (currentMode: 'edit' | 'create') => setMode(currentMode);
+  const handelMode = (currentMode: TDevelopMode) => setMode(currentMode);
   return (
     <>
       <main className={styles.main}>

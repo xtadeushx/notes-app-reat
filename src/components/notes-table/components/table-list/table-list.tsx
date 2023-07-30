@@ -2,9 +2,10 @@ import { useSelector } from 'react-redux';
 import { TableItem } from '../table-item/table-item';
 import styles from './table-list.module.scss';
 import { RootState } from '../../../../redux/store';
+import { TDevelopMode } from '../../../../common/types/note.type';
 
 interface ITableListProps {
-  handelMode: (mode: 'edit' | 'create') => void;
+  handelMode: (mode: TDevelopMode) => void;
   handelOpen: () => void;
 }
 

@@ -17,6 +17,7 @@ import deleteIcon from '../../../../assets/delete.png';
 
 import styles from './table-item.module.scss';
 import { NotesStatus } from '../../../../common/enums/notes-status';
+import { TDevelopMode } from '../../../../common/types/note.type';
 type TTableItemProps = {
   id: number;
   src: string;
@@ -26,7 +27,7 @@ type TTableItemProps = {
   content: string[];
   dates: string[];
   status?: 'active' | 'archived';
-  handelMode: (mode: 'edit' | 'create') => void;
+  handelMode: (mode: TDevelopMode) => void;
   handelOpen: () => void;
 
 };

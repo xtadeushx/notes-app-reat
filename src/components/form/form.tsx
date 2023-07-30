@@ -10,6 +10,8 @@ import { IconsSrc } from '../../common/enums/icons-src';
 import { NotesStatus } from '../../common/enums/notes-status';
 import { formatDateLong } from '../../utils/dateHelper';
 import { addNote } from '../../redux/slices/notes-slice';
+import { CreateMode } from '../../common/enums/create-mode';
+import { TDevelopMode } from '../../common/types/note.type';
 const SELECT__OPTIONS = [
   { id: 1, value: 'task', text: 'Task' },
   { id: 2, value: 'random thoughts', text: 'Random Thoughts' },
@@ -18,7 +20,7 @@ const SELECT__OPTIONS = [
 ];
 
 interface IFormProps {
-  mode: 'edit' | 'create',
+  mode: TDevelopMode,
   handelOpen: () => void
 }
 type Values = {
@@ -97,7 +99,7 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen }) => {
         /> :
         null}
       <Button type="submit" className={styles.add__note}>
-        {mode === "create" ? 'Add note' : 'Edit note'}
+        {mode === CreateMode.CREATE ? 'Add note' : 'Edit note'}
       </Button>
     </form>
   );

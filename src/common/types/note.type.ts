@@ -11,3 +11,5 @@ export interface INote {
 }
 
 export type TStatus = 'active' | 'archived'
+
+export type TDevelopMode = 'create' | 'edit'
