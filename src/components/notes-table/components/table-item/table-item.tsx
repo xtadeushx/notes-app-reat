@@ -29,11 +29,8 @@ const TableItem: React.FC<TTableItemProps> = ({
   id,
 }) => {
   const dispatch = useDispatch();
+  const handleDeleteItem = (id: number) => dispatch(deleteNote(id));
 
-  const handleDeleteItem = (id: number) => {
-    console.log('handleDeleteItem');
-    dispatch(deleteNote(id));
-  };
   return (
     <li className={styles.item}>
       <div className={styles.img__container}>
