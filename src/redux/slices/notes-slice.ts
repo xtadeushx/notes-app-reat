@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { INote } from "../../common/types/note.type";
+import { NotesStatus } from "../../common/enums/notes-status";
 
 export interface INotesInitialState {
   notesList: INote[]
@@ -95,9 +96,19 @@ export const noteSlice = createSlice({
       state.notesList = state.notesList.filter(note => note.id !== action.payload);
     },
 
-    deleteAllNotes: (state) => { state.notesList = [] }
+    deleteAllNotes: (state) => { state.notesList = [] },
+
+    changeNoteStatus: (state, action: PayloadAction<number>) => {
+      state.notesList = state.notesList.map(note => {
+        if (note.id === action.payload) {
+          return { ...note, status: note.status === NotesStatus.ARCHIVED ? NotesStatus.ACTIVE : NotesStatus.ARCHIVED };
+        } else {
+          return note;
+        }
+      });
+    }
   }
 })
 
-export const { addNote, deleteNote, deleteAllNotes } = noteSlice.actions
+export const { addNote, deleteNote, deleteAllNotes, changeNoteStatus } = noteSlice.actions
 export default noteSlice.reducer

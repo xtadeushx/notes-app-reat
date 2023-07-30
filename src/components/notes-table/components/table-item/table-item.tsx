@@ -1,13 +1,22 @@
+import clsx from 'clsx';
+import classNames from 'classnames';
+
+import { useDispatch } from 'react-redux';
+import {
+  changeNoteStatus,
+  deleteNote,
+} from '../../../../redux/slices/notes-slice';
+
 import { Button } from '../../../common/button/button';
+import { ButtonsWrapper } from '../../../common/buttons-wrapper/buttons-wrapper';
+import { Image } from '../../../common/image/image';
+
 import editingIcon from '../../../../assets/editing.png';
 import archiveIcon from '../../../../assets/archive.png';
 import deleteIcon from '../../../../assets/delete.png';
+
 import styles from './table-item.module.scss';
-import clsx from 'clsx';
-import { ButtonsWrapper } from '../../../common/buttons-wrapper/buttons-wrapper';
-import Image from '../../../common/image/image';
-import { useDispatch } from 'react-redux';
-import { deleteNote } from '../../../../redux/slices/notes-slice';
+import { NotesStatus } from '../../../../common/enums/notes-status';
 type TTableItemProps = {
   id: number;
   src: string;
@@ -27,12 +36,19 @@ const TableItem: React.FC<TTableItemProps> = ({
   src,
   createdAt,
   id,
+  status,
 }) => {
   const dispatch = useDispatch();
   const handleDeleteItem = (id: number) => dispatch(deleteNote(id));
+  const handelNoteStatus = (id: number) => dispatch(changeNoteStatus(id));
 
   return (
-    <li className={styles.item}>
+    <li
+      className={classNames({
+        [styles.item]: true,
+        [styles.item__archived]: status === NotesStatus.ARCHIVED,
+      })}
+    >
       <div className={styles.img__container}>
         <span className={styles.img__wrapper}>
           <Image
@@ -53,7 +69,7 @@ const TableItem: React.FC<TTableItemProps> = ({
         <Button type="button">
           <Image alt="editing icon" src={editingIcon} />
         </Button>
-        <Button type="button">
+        <Button type="button" onClick={() => handelNoteStatus(id)}>
           <Image alt="archive icon" src={archiveIcon} />
         </Button>
         <Button type="button" onClick={() => handleDeleteItem(id)}>

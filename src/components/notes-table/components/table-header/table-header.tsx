@@ -3,7 +3,7 @@ import archiveIcon from '../../../../assets/archive.png';
 import styles from './table-header.module.scss';
 import { Button } from '../../../common/button/button';
 import { ButtonsWrapper } from '../../../common/buttons-wrapper/buttons-wrapper';
-import Image from '../../../common/image/image';
+import { Image } from '../../../common/image/image';
 import { useDispatch } from 'react-redux';
 import { deleteAllNotes } from '../../../../redux/slices/notes-slice';
 
