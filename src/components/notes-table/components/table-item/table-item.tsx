@@ -18,6 +18,7 @@ import deleteIcon from '../../../../assets/delete.png';
 import styles from './table-item.module.scss';
 import { NotesStatus } from '../../../../common/enums/notes-status';
 import { TDevelopMode } from '../../../../common/types/note.type';
+
 type TTableItemProps = {
   id: number;
   src: string;
@@ -29,6 +30,7 @@ type TTableItemProps = {
   status?: 'active' | 'archived';
   handelMode: (mode: TDevelopMode) => void;
   handelOpen: () => void;
+  handelId: (id: number) => void;
 };
 
 const TableItem: React.FC<TTableItemProps> = ({
@@ -42,11 +44,13 @@ const TableItem: React.FC<TTableItemProps> = ({
   status,
   handelMode,
   handelOpen,
+  handelId
 }) => {
   const dispatch = useDispatch();
   const handleDeleteItem = (id: number) => dispatch(deleteNote(id));
   const handelNoteStatus = (id: number) => dispatch(changeNoteStatus(id));
   const handelEditItem = () => {
+    handelId(id)
     handelMode('edit');
     handelOpen();
   };

@@ -10,6 +10,6 @@ export interface TInputProps extends InputHTMLAttributes<HTMLInputElement> {
   dataTestId: string
   children?: React.ReactNode,
   value?: string,
-  onChange?: () => void
+  onChange: () => void
   text: string
 }

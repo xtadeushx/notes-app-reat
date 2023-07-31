@@ -10,13 +10,19 @@ import { useState } from 'react';
 const HomePage: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
   const [mode, setMode] = useState<TDevelopMode>(CreateMode.CREATE);
+  const [currentId, setCurrentId] = useState<number | null>(null);
+
   const handelOpen = () => setOpen((prev) => !prev);
   const handelMode = (currentMode: TDevelopMode) => setMode(currentMode);
+  const handelId = (id: number) => {
+    if (!currentId) return
+    setCurrentId(id)
+  };
   return (
     <>
       <main className={styles.main}>
         <div className="container">
-          <NotesTable handelOpen={handelOpen} handelMode={handelMode} />
+          <NotesTable handelOpen={handelOpen} handelMode={handelMode} handelId={handelId} />
         </div>
       </main>
       <Modal
@@ -24,7 +30,7 @@ const HomePage: React.FC = () => {
         isOpen={isOpen}
         onClose={handelOpen}
       >
-        <Form mode={mode} handelOpen={handelOpen} />
+        <Form mode={mode} handelOpen={handelOpen} currentId={currentId} />
       </Modal>
     </>
   );

@@ -112,9 +112,13 @@ export const noteSlice = createSlice({
       state.notesList = state.notesList.map(note => {
         return { ...note, status: action.payload };
       });
+    },
+
+    editNote: (state, action: PayloadAction<{ id: number; newNote: INote }>) => {
+      state.notesList = state.notesList.map((el) => (el.id === action.payload.id ? action.payload.newNote : el));
     }
   }
 })
 
-export const { addNote, deleteNote, deleteAllNotes, changeNoteStatus, changeAllNotesStatus } = noteSlice.actions
+export const { addNote, deleteNote, deleteAllNotes, changeNoteStatus, changeAllNotesStatus, editNote } = noteSlice.actions
 export default noteSlice.reducer

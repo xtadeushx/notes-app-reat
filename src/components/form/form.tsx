@@ -4,14 +4,16 @@ import Select from '../common/select/select';
 import { Button } from '../common/button/button';
 import { Input } from '../common/input/input';
 import { useState } from '../../hooks/hooks';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { IconsSrc } from '../../common/enums/icons-src';
 import { NotesStatus } from '../../common/enums/notes-status';
-import { formatDateLong } from '../../utils/dateHelper';
-import { addNote } from '../../redux/slices/notes-slice';
+import { formatDateLong, formatDateShort } from '../../utils/dateHelper';
+import { addNote, editNote } from '../../redux/slices/notes-slice';
 import { CreateMode } from '../../common/enums/create-mode';
 import { TDevelopMode } from '../../common/types/note.type';
+import { RootState } from '../../redux/store';
+
 const SELECT__OPTIONS = [
   { id: 1, value: 'task', text: 'Task' },
   { id: 2, value: 'random thoughts', text: 'Random Thoughts' },
@@ -21,25 +23,29 @@ const SELECT__OPTIONS = [
 
 interface IFormProps {
   mode: TDevelopMode,
-  handelOpen: () => void
+  handelOpen: () => void,
+  currentId: number
 }
 type Values = {
   name: string,
   category: string,
   content: string,
   date: string,
+
 }
 
 type IconsSrcType = keyof typeof IconsSrc;
-const Form: React.FC<IFormProps> = ({ mode, handelOpen }) => {
+const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
   const dispatch = useDispatch();
+  const { notesList } = useSelector((state: RootState) => state.notes)
 
   const [values, setValues] = useState<Values>({
     name: "",
-    category: "",
+    category: "Task",
     content: "",
     date: ""
   });
+
   const handleFormSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     const newNote = {
@@ -55,12 +61,44 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen }) => {
     dispatch(addNote(newNote));
     handelOpen();
   };
+
+  const handelSetValueToFieldForm = (id: number) => {
+    const currentItem = notesList.find(item => item.id === id);
+    if (!currentItem) return
+    setValues({
+      name: currentItem.title,
+      category: currentItem.category,
+      content: currentItem.content.join(' ,'),
+      date: currentItem.createdAt
+    })
+
+    const newNote = {
+      ...currentItem,
+      title: values.name,
+      createdAt: formatDateLong(new Date(Date.now())),
+      category: values.category,
+      src: IconsSrc[values.category as IconsSrcType] || IconsSrc.TASK,
+      content: [...currentItem.content, values.content],
+      dates: [formatDateShort(new Date(currentItem.createdAt))],
+
+    }
+    dispatch(editNote({ id, newNote }));
+    handelOpen();
+  }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   }
 
   return (
-    <form className={styles.form} onSubmit={handleFormSubmit}>
+    <form className={styles.form} onSubmit={(event) => {
+      if (mode === 'create') {
+        handleFormSubmit(event)
+      } else {
+        handelSetValueToFieldForm(currentId)
+      }
+    }
+
+    }>
       <Input
         type="text"
         value={values.name}
@@ -92,9 +130,9 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen }) => {
         <Input
           type="date"
           value={values.date}
+          required={false}
           onChange={handleChange}
-          required
-          placeholder="Note content"
+          // required
           text="Dates"
         /> :
         null}
