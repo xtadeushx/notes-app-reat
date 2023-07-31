@@ -7,6 +7,7 @@ import { TDevelopMode } from '../../../../common/types/note.type';
 interface ITableListProps {
   handelMode: (mode: TDevelopMode) => void;
   handelOpen: () => void;
+
 }
 
 const TableList: React.FC<ITableListProps> = ({ handelMode, handelOpen }) => {

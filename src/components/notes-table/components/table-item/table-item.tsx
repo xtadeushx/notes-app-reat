@@ -29,7 +29,6 @@ type TTableItemProps = {
   status?: 'active' | 'archived';
   handelMode: (mode: TDevelopMode) => void;
   handelOpen: () => void;
-
 };
 
 const TableItem: React.FC<TTableItemProps> = ({
@@ -42,7 +41,7 @@ const TableItem: React.FC<TTableItemProps> = ({
   id,
   status,
   handelMode,
-  handelOpen
+  handelOpen,
 }) => {
   const dispatch = useDispatch();
   const handleDeleteItem = (id: number) => dispatch(deleteNote(id));
@@ -76,13 +75,33 @@ const TableItem: React.FC<TTableItemProps> = ({
       <p className="item__dates">{dates.join(' ,')}</p>
 
       <ButtonsWrapper>
-        <Button type="button" onClick={handelEditItem}>
+        <Button
+          type="button"
+          onClick={handelEditItem}
+          disabled={status === 'archived'}
+          className={classNames({
+            'button--light': status === 'archived',
+          })}
+        >
           <Image alt="editing icon" src={editingIcon} />
         </Button>
-        <Button type="button" onClick={() => handelNoteStatus(id)}>
+        <Button
+          type="button"
+          onClick={() => handelNoteStatus(id)}
+          className={classNames({
+            'button--light': status === 'archived',
+          })}
+        >
           <Image alt="archive icon" src={archiveIcon} />
         </Button>
-        <Button type="button" onClick={() => handleDeleteItem(id)}>
+        <Button
+          type="button"
+          onClick={() => handleDeleteItem(id)}
+          disabled={status === 'archived'}
+          className={classNames({
+            'button--light': status === 'archived',
+          })}
+        >
           <Image alt="delete icon" src={deleteIcon} />
         </Button>
       </ButtonsWrapper>

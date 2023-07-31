@@ -33,9 +33,9 @@ const Modal: FC<TModalProps> = ({ isOpen, isCentered, onClose, children, }) => {
         <div className={styles.modal__wrapper} ></div>
         <div className={styles.modal__body}>
           {children}
+          <p className={styles.close} onClick={() => handleOutsideClick()
+          }>X</p>
         </div>
-        <p className={styles.close} onClick={() => handleOutsideClick()
-        }>X</p>
       </div>
     </Portal>
   );
