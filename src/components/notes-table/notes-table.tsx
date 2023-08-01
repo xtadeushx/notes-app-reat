@@ -10,7 +10,7 @@ import styles from './notes-table.module.scss';
 interface INoteTable {
   handelOpen: () => void;
   handelMode: (mode: TDevelopMode) => void;
-  handelId: (id: number) => void;
+  handelId: (id: string) => void;
 }
 
 const NotesTable: React.FC<INoteTable> = ({ handelOpen, handelMode, handelId }) => {

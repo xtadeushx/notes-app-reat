@@ -10,11 +10,10 @@ import { useState } from 'react';
 const HomePage: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
   const [mode, setMode] = useState<TDevelopMode>(CreateMode.CREATE);
-  const [currentId, setCurrentId] = useState<number | null>(null);
-
+  const [currentId, setCurrentId] = useState<string>('1');
   const handelOpen = () => setOpen((prev) => !prev);
   const handelMode = (currentMode: TDevelopMode) => setMode(currentMode);
-  const handelId = (id: number) => {
+  const handelId = (id: string) => {
     if (!currentId) return
     setCurrentId(id)
   };

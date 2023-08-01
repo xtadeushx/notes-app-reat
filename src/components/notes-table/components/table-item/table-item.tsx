@@ -20,7 +20,7 @@ import { NotesStatus } from '../../../../common/enums/notes-status';
 import { TDevelopMode } from '../../../../common/types/note.type';
 
 type TTableItemProps = {
-  id: number;
+  id: string;
   src: string;
   title: string;
   createdAt: string;
@@ -30,7 +30,7 @@ type TTableItemProps = {
   status?: 'active' | 'archived';
   handelMode: (mode: TDevelopMode) => void;
   handelOpen: () => void;
-  handelId: (id: number) => void;
+  handelId: (id: string) => void;
 };
 
 const TableItem: React.FC<TTableItemProps> = ({
@@ -47,8 +47,8 @@ const TableItem: React.FC<TTableItemProps> = ({
   handelId
 }) => {
   const dispatch = useDispatch();
-  const handleDeleteItem = (id: number) => dispatch(deleteNote(id));
-  const handelNoteStatus = (id: number) => dispatch(changeNoteStatus(id));
+  const handleDeleteItem = (id: string) => dispatch(deleteNote(id));
+  const handelNoteStatus = (id: string) => dispatch(changeNoteStatus(id));
   const handelEditItem = () => {
     handelId(id)
     handelMode('edit');
@@ -82,7 +82,7 @@ const TableItem: React.FC<TTableItemProps> = ({
         <Button
           type="button"
           onClick={handelEditItem}
-          disabled={status === 'archived'}
+          disabled={status === NotesStatus.ARCHIVED}
           className={classNames({
             'button--light': status === 'archived',
           })}
@@ -93,7 +93,7 @@ const TableItem: React.FC<TTableItemProps> = ({
           type="button"
           onClick={() => handelNoteStatus(id)}
           className={classNames({
-            'button--light': status === 'archived',
+            'button--light': status === NotesStatus.ARCHIVED,
           })}
         >
           <Image alt="archive icon" src={archiveIcon} />

@@ -8,12 +8,13 @@
 
 .label {
   width: 100%;
+  margin: 10px 0px 10px 0px;
 }
 
 .input {
   width: 100%;
   padding: 5px 10px;
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0px 5px 0px;
   display: block;
 }
 
@@ -37,4 +38,9 @@
     background-color: #c5c4c4;
     transition: all 0.5s ease-in-out;
   }
+}
+
+.error__message {
+  font-size: 1.4rem;
+  color: tomato;
 }

@@ -1,6 +1,6 @@
 
 export interface INote {
-  id: number,
+  id: string,
   src: string,
   title: string,
   createdAt: string,

@@ -7,7 +7,7 @@ import { TDevelopMode } from '../../../../common/types/note.type';
 interface ITableListProps {
   handelMode: (mode: TDevelopMode) => void;
   handelOpen: () => void;
-  handelId: (id: number) => void;
+  handelId: (id: string) => void;
 
 }
 

@@ -8,7 +8,7 @@ export interface INotesInitialState {
 const initialState: INotesInitialState = {
   notesList: [
     {
-      id: 1,
+      id: '1',
       src: 'src/assets/shopping-cart.png',
       title: 'Shopping list',
       createdAt: 'April,20 2021',
@@ -18,7 +18,7 @@ const initialState: INotesInitialState = {
       status: 'active',
     },
     {
-      id: 2,
+      id: '2',
       src: 'src/assets/thought.png',
       title: 'The theory of evolution',
       createdAt: 'April,27 2021',
@@ -28,7 +28,7 @@ const initialState: INotesInitialState = {
       status: 'archived',
     },
     {
-      id: 3,
+      id: '3',
       src: 'src/assets/lightbulb.png',
       title: 'New feature',
       createdAt: 'April,27 2021',
@@ -39,7 +39,7 @@ const initialState: INotesInitialState = {
     },
 
     {
-      id: 4,
+      id: '4',
       src: 'src/assets/shopping-cart.png',
       title: 'Learning list',
       createdAt: 'April,21 2021',
@@ -49,7 +49,7 @@ const initialState: INotesInitialState = {
       status: 'active',
     },
     {
-      id: 5,
+      id: '5',
       src: 'src/assets/quote.png',
       title: 'Steve Jobs',
       createdAt: 'October,21 2019',
@@ -60,7 +60,7 @@ const initialState: INotesInitialState = {
     },
 
     {
-      id: 6,
+      id: '6',
       src: 'src/assets/lightbulb.png',
       title: 'New feature',
       createdAt: 'June,27 2021',
@@ -70,7 +70,7 @@ const initialState: INotesInitialState = {
       status: 'active',
     },
     {
-      id: 7,
+      id: '7',
       src: 'src/assets/quote.png',
       title: 'Albert Einstein',
       createdAt: 'January,14 2020',
@@ -92,13 +92,13 @@ export const noteSlice = createSlice({
       state.notesList = [...state.notesList, action.payload];
     },
 
-    deleteNote: (state, action: PayloadAction<number>) => {
+    deleteNote: (state, action: PayloadAction<string>) => {
       state.notesList = state.notesList.filter(note => note.id !== action.payload);
     },
 
     deleteAllNotes: (state) => { state.notesList = [] },
 
-    changeNoteStatus: (state, action: PayloadAction<number>) => {
+    changeNoteStatus: (state, action: PayloadAction<string>) => {
       state.notesList = state.notesList.map(note => {
         if (note.id === action.payload) {
           return { ...note, status: note.status === NotesStatus.ARCHIVED ? NotesStatus.ACTIVE : NotesStatus.ARCHIVED };
@@ -114,7 +114,7 @@ export const noteSlice = createSlice({
       });
     },
 
-    editNote: (state, action: PayloadAction<{ id: number; newNote: INote }>) => {
+    editNote: (state, action: PayloadAction<{ id: string; newNote: INote }>) => {
       state.notesList = state.notesList.map((el) => (el.id === action.payload.id ? action.payload.newNote : el));
     }
   }
