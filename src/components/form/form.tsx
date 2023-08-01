@@ -58,8 +58,8 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
       };
       dispatch(addNote(newNote));
     } else {
-      const currentItem = notesList.find(item => item.id === currentId);
-      if (!currentItem) return
+      const currentItem = notesList.find((item) => item.id === currentId);
+      if (!currentItem) return;
       const newNote = {
         ...currentItem,
         title: data.name,
@@ -68,14 +68,12 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
         src: IconsSrc[data.category as IconsSrcType] || IconsSrc.TASK,
         content: [...currentItem.content, data.content],
         dates: [formatDateShort(new Date(currentItem.createdAt))],
-
-      }
+      };
       dispatch(editNote({ id: currentId, newNote }));
     }
     reset();
     handelOpen();
   };
-
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

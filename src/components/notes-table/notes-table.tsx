@@ -1,5 +1,3 @@
-
-
 import { CreateMode } from '../../common/enums/enums';
 import { TDevelopMode } from '../../common/types/note.type';
 import { Button } from '../common/button/button';
@@ -13,19 +11,31 @@ interface INoteTable {
   handelId: (id: string) => void;
 }
 
-const NotesTable: React.FC<INoteTable> = ({ handelOpen, handelMode, handelId }) => {
+const NotesTable: React.FC<INoteTable> = ({
+  handelOpen,
+  handelMode,
+  handelId,
+}) => {
   return (
     <div className={styles.table}>
       <TableHeader />
-      <TableList handelMode={handelMode} handelOpen={handelOpen} handelId={handelId} />
-      <Button type='button' className={styles.add__note} onClick={() => {
-        handelOpen();
-        handelMode(CreateMode.CREATE);
-      }} >
+      <TableList
+        handelMode={handelMode}
+        handelOpen={handelOpen}
+        handelId={handelId}
+      />
+      <Button
+        type="button"
+        className={styles.add__note}
+        onClick={() => {
+          handelOpen();
+          handelMode(CreateMode.CREATE);
+        }}
+      >
         Create note
       </Button>
     </div>
-  )
-}
+  );
+};
 
-export { NotesTable }
+export { NotesTable };

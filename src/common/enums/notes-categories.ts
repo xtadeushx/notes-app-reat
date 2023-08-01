@@ -5,4 +5,4 @@ enum NotesCategories {
   QUOTE = 'quote',
 }
 
-export { NotesCategories }
+export { NotesCategories };

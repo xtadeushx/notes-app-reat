@@ -1,4 +1,4 @@
-import { INote } from "../common/types/note.type";
+import { INote } from '../common/types/note.type';
 
 const DATA: INote[] = [
   {

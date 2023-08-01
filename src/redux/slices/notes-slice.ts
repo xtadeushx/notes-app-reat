@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { INote, TStatus } from "../../common/types/note.type";
-import { NotesStatus } from "../../common/enums/notes-status";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { INote, TStatus } from '../../common/types/note.type';
+import { NotesStatus } from '../../common/enums/notes-status';
 
 export interface INotesInitialState {
-  notesList: INote[]
+  notesList: INote[];
 }
 const initialState: INotesInitialState = {
   notesList: [
@@ -54,7 +54,9 @@ const initialState: INotesInitialState = {
       title: 'Steve Jobs',
       createdAt: 'October,21 2019',
       category: 'quote',
-      content: ['We are here to contribute to this world. Why else are we here?'],
+      content: [
+        'We are here to contribute to this world. Why else are we here?',
+      ],
       dates: [],
       status: 'archived',
     },
@@ -81,8 +83,8 @@ const initialState: INotesInitialState = {
       dates: [],
       status: 'archived',
     },
-  ]
-}
+  ],
+};
 
 export const noteSlice = createSlice({
   name: 'notes',
@@ -93,32 +95,54 @@ export const noteSlice = createSlice({
     },
 
     deleteNote: (state, action: PayloadAction<string>) => {
-      state.notesList = state.notesList.filter(note => note.id !== action.payload);
+      state.notesList = state.notesList.filter(
+        (note) => note.id !== action.payload
+      );
     },
 
-    deleteAllNotes: (state) => { state.notesList = [] },
+    deleteAllNotes: (state) => {
+      state.notesList = [];
+    },
 
     changeNoteStatus: (state, action: PayloadAction<string>) => {
-      state.notesList = state.notesList.map(note => {
+      state.notesList = state.notesList.map((note) => {
         if (note.id === action.payload) {
-          return { ...note, status: note.status === NotesStatus.ARCHIVED ? NotesStatus.ACTIVE : NotesStatus.ARCHIVED };
+          return {
+            ...note,
+            status:
+              note.status === NotesStatus.ARCHIVED
+                ? NotesStatus.ACTIVE
+                : NotesStatus.ARCHIVED,
+          };
         } else {
           return note;
         }
-      })
+      });
     },
 
     changeAllNotesStatus: (state, action: PayloadAction<TStatus>) => {
-      state.notesList = state.notesList.map(note => {
+      state.notesList = state.notesList.map((note) => {
         return { ...note, status: action.payload };
       });
     },
 
-    editNote: (state, action: PayloadAction<{ id: string; newNote: INote }>) => {
-      state.notesList = state.notesList.map((el) => (el.id === action.payload.id ? action.payload.newNote : el));
-    }
-  }
-})
+    editNote: (
+      state,
+      action: PayloadAction<{ id: string; newNote: INote }>
+    ) => {
+      state.notesList = state.notesList.map((el) =>
+        el.id === action.payload.id ? action.payload.newNote : el
+      );
+    },
+  },
+});
 
-export const { addNote, deleteNote, deleteAllNotes, changeNoteStatus, changeAllNotesStatus, editNote } = noteSlice.actions
-export default noteSlice.reducer
+export const {
+  addNote,
+  deleteNote,
+  deleteAllNotes,
+  changeNoteStatus,
+  changeAllNotesStatus,
+  editNote,
+} = noteSlice.actions;
+export default noteSlice.reducer;

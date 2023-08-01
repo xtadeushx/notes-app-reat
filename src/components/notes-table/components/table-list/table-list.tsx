@@ -8,25 +8,34 @@ interface ITableListProps {
   handelMode: (mode: TDevelopMode) => void;
   handelOpen: () => void;
   handelId: (id: string) => void;
-
 }
 
-const TableList: React.FC<ITableListProps> = ({ handelMode, handelOpen, handelId }) => {
-  const { notesList } = useSelector((state: RootState) => state.notes)
+const TableList: React.FC<ITableListProps> = ({
+  handelMode,
+  handelOpen,
+  handelId,
+}) => {
+  const { notesList } = useSelector((state: RootState) => state.notes);
 
   return (
     <ul className={styles.table__list}>
-      {
-        (notesList && notesList.length > 0)
-          ?
-          (notesList.map(note => {
-            return <TableItem key={note.id} {...note} handelMode={handelMode} handelOpen={handelOpen} handelId={handelId} />
-          }))
-          :
-          <p>Your list of notes are empty. PLease add New NOTES</p>
-      }
+      {notesList && notesList.length > 0 ? (
+        notesList.map((note) => {
+          return (
+            <TableItem
+              key={note.id}
+              {...note}
+              handelMode={handelMode}
+              handelOpen={handelOpen}
+              handelId={handelId}
+            />
+          );
+        })
+      ) : (
+        <p>Your list of notes are empty. PLease add New NOTES</p>
+      )}
     </ul>
-  )
-}
+  );
+};
 
 export { TableList };

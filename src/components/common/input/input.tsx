@@ -14,9 +14,9 @@ const Input: FC<TInputProps> = ({
   ...rest
 }) => {
   return (
-    <label className={styles.label} >
+    <label className={styles.label}>
       {text}
-      < input
+      <input
         type={type}
         name={name}
         required={required}
@@ -25,7 +25,7 @@ const Input: FC<TInputProps> = ({
         className={styles['input']}
         {...rest}
       />
-    </label >
+    </label>
   );
 };
 

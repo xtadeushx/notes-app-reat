@@ -13,4 +13,4 @@ const MONTHS = [
   'December',
 ];
 
-export { MONTHS }
+export { MONTHS };

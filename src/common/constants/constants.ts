@@ -1,1 +1,1 @@
-export { MONTHS } from './months'
+export { MONTHS } from './months';

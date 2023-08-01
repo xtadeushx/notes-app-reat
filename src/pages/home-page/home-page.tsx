@@ -14,21 +14,21 @@ const HomePage: React.FC = () => {
   const handelOpen = () => setOpen((prev) => !prev);
   const handelMode = (currentMode: TDevelopMode) => setMode(currentMode);
   const handelId = (id: string) => {
-    if (!currentId) return
-    setCurrentId(id)
+    if (!currentId) return;
+    setCurrentId(id);
   };
   return (
     <>
       <main className={styles.main}>
         <div className="container">
-          <NotesTable handelOpen={handelOpen} handelMode={handelMode} handelId={handelId} />
+          <NotesTable
+            handelOpen={handelOpen}
+            handelMode={handelMode}
+            handelId={handelId}
+          />
         </div>
       </main>
-      <Modal
-        isCentered
-        isOpen={isOpen}
-        onClose={handelOpen}
-      >
+      <Modal isCentered isOpen={isOpen} onClose={handelOpen}>
         <Form mode={mode} handelOpen={handelOpen} currentId={currentId} />
       </Modal>
     </>

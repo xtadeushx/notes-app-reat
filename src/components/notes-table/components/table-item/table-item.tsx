@@ -44,13 +44,13 @@ const TableItem: React.FC<TTableItemProps> = ({
   status,
   handelMode,
   handelOpen,
-  handelId
+  handelId,
 }) => {
   const dispatch = useDispatch();
   const handleDeleteItem = (id: string) => dispatch(deleteNote(id));
   const handelNoteStatus = (id: string) => dispatch(changeNoteStatus(id));
   const handelEditItem = () => {
-    handelId(id)
+    handelId(id);
     handelMode('edit');
     handelOpen();
   };

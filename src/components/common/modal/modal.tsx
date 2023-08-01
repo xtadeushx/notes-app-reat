@@ -14,7 +14,7 @@ type TModalProps = {
   children: React.ReactElement;
 };
 
-const Modal: FC<TModalProps> = ({ isOpen, isCentered, onClose, children, }) => {
+const Modal: FC<TModalProps> = ({ isOpen, isCentered, onClose, children }) => {
   const { handleOutsideClick } = useModal({
     onClose,
   });
@@ -30,11 +30,12 @@ const Modal: FC<TModalProps> = ({ isOpen, isCentered, onClose, children, }) => {
           [styles.modal]: true,
         })}
       >
-        <div className={styles.modal__wrapper} ></div>
+        <div className={styles.modal__wrapper}></div>
         <div className={styles.modal__body}>
           {children}
-          <p className={styles.close} onClick={() => handleOutsideClick()
-          }>X</p>
+          <p className={styles.close} onClick={() => handleOutsideClick()}>
+            X
+          </p>
         </div>
       </div>
     </Portal>

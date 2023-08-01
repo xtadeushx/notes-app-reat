@@ -1,6 +1,6 @@
 enum CreateMode {
-  EDIT = "edit",
-  CREATE = "create",
+  EDIT = 'edit',
+  CREATE = 'create',
 }
 
-export { CreateMode }
+export { CreateMode };
