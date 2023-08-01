@@ -12,3 +12,13 @@
 
 .header__description {
 }
+
+.header__summary {
+  background-color: var(--header-background-color);
+  color: var(--primary-color);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr;
+  grid-template-rows: auto;
+  align-items: center;
+}

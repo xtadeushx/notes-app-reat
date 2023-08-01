@@ -2,7 +2,7 @@ import { INote } from '../common/types/note.type';
 
 const DATA: INote[] = [
   {
-    id: 1,
+    id: '1',
     src: 'src/assets/shopping-cart.png',
     title: 'Shopping list',
     createdAt: 'April,20 2021',
@@ -12,7 +12,7 @@ const DATA: INote[] = [
     status: 'active',
   },
   {
-    id: 2,
+    id: '2',
     src: 'src/assets/thought.png',
     title: 'The theory of evolution',
     createdAt: 'April,27 2021',
@@ -22,7 +22,7 @@ const DATA: INote[] = [
     status: 'archived',
   },
   {
-    id: 3,
+    id: '3',
     src: 'src/assets/lightbulb.png',
     title: 'New feature',
     createdAt: 'April,27 2021',
@@ -33,7 +33,7 @@ const DATA: INote[] = [
   },
 
   {
-    id: 4,
+    id: '4',
     src: 'src/assets/shopping-cart.png',
     title: 'Learning list',
     createdAt: 'April,21 2021',
@@ -43,7 +43,7 @@ const DATA: INote[] = [
     status: 'active',
   },
   {
-    id: 5,
+    id: '5',
     src: 'src/assets/quote.png',
     title: 'Steve Jobs',
     createdAt: 'October,21 2019',
@@ -54,7 +54,7 @@ const DATA: INote[] = [
   },
 
   {
-    id: 6,
+    id: '6',
     src: 'src/assets/lightbulb.png',
     title: 'New feature',
     createdAt: 'June,27 2021',
@@ -64,7 +64,7 @@ const DATA: INote[] = [
     status: 'active',
   },
   {
-    id: 7,
+    id: '7',
     src: 'src/assets/quote.png',
     title: 'Albert Einstein',
     createdAt: 'January,14 2020',

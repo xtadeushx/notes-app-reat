@@ -12,8 +12,17 @@ import {
 } from '../../../../redux/slices/notes-slice';
 import { TStatus } from '../../../../common/types/note.type';
 import { NotesStatus } from '../../../../common/enums/notes-status';
+import classNames from 'classnames';
 
-const TableHeader: React.FC = () => {
+interface ITableHeaderProps {
+  titleList: string[];
+  withButtons: boolean;
+}
+
+const TableHeader: React.FC<ITableHeaderProps> = ({
+  titleList,
+  withButtons,
+}) => {
   const [currentStatus, setCurrentStatus] = useState<TStatus>(
     NotesStatus.ARCHIVED
   );
@@ -29,29 +38,38 @@ const TableHeader: React.FC = () => {
     );
   };
   return (
-    <div className={styles.table__header}>
-      <p className={styles.header__description}>Name</p>
-      <p className={styles.header__description}>Created</p>
-      <p className={styles.header__description}>Category</p>
-      <p className={styles.header__description}>Content</p>
-      <p className={styles.header__description}>Dates</p>
-
-      <ButtonsWrapper>
-        <Button
-          type="button"
-          className="button--light"
-          onClick={handelArchiveAllNotes}
-        >
-          <Image alt="archive icon" src={archiveIcon} />
-        </Button>
-        <Button
-          type="button"
-          className="button--light"
-          onClick={handelDeleteAllNotes}
-        >
-          <Image alt="delete icon" src={deleteIcon} />
-        </Button>
-      </ButtonsWrapper>
+    <div
+      className={classNames({
+        [styles.table__header]: true,
+        [styles.header__summary]: !withButtons,
+      })}
+    >
+      {titleList.length > 0 &&
+        titleList.map((el) => {
+          return (
+            <p key={el} className={styles.header__description}>
+              {el}
+            </p>
+          );
+        })}
+      {withButtons && (
+        <ButtonsWrapper>
+          <Button
+            type="button"
+            className="button--light"
+            onClick={handelArchiveAllNotes}
+          >
+            <Image alt="archive icon" src={archiveIcon} />
+          </Button>
+          <Button
+            type="button"
+            className="button--light"
+            onClick={handelDeleteAllNotes}
+          >
+            <Image alt="delete icon" src={deleteIcon} />
+          </Button>
+        </ButtonsWrapper>
+      )}
     </div>
   );
 };

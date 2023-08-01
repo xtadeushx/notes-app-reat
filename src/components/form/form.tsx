@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { IconsSrc } from '../../common/enums/icons-src';
 import { NotesStatus } from '../../common/enums/notes-status';
-import { formatDateLong, formatDateShort } from '../../utils/dateHelper';
+import { formatDateLong, formatDateShort } from '../../utils/date-helper';
 import { addNote, editNote } from '../../redux/slices/notes-slice';
 import { CreateMode } from '../../common/enums/create-mode';
 import { TDevelopMode } from '../../common/types/note.type';

@@ -84,7 +84,7 @@ const TableItem: React.FC<TTableItemProps> = ({
           onClick={handelEditItem}
           disabled={status === NotesStatus.ARCHIVED}
           className={classNames({
-            'button--light': status === 'archived',
+            'button--light': status === NotesStatus.ARCHIVED,
           })}
         >
           <Image alt="editing icon" src={editingIcon} />
@@ -101,9 +101,9 @@ const TableItem: React.FC<TTableItemProps> = ({
         <Button
           type="button"
           onClick={() => handleDeleteItem(id)}
-          disabled={status === 'archived'}
+          disabled={status === NotesStatus.ARCHIVED}
           className={classNames({
-            'button--light': status === 'archived',
+            'button--light': status === NotesStatus.ARCHIVED,
           })}
         >
           <Image alt="delete icon" src={deleteIcon} />
