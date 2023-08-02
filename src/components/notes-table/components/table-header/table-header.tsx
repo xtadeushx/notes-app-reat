@@ -1,18 +1,21 @@
+import classNames from 'classnames';
+import { v4 as uuidv4 } from 'uuid';
+
 import deleteIcon from '../../../../assets/delete.png';
 import archiveIcon from '../../../../assets/archive.png';
-import styles from './table-header.module.scss';
 import { Button } from '../../../common/button/button';
 import { ButtonsWrapper } from '../../../common/buttons-wrapper/buttons-wrapper';
 import { Image } from '../../../common/image/image';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch, useState } from '../../../../hooks/hooks';
 import {
   changeAllNotesStatus,
   deleteAllNotes,
 } from '../../../../redux/slices/notes-slice';
+
 import { TStatus } from '../../../../common/types/note.type';
 import { NotesStatus } from '../../../../common/enums/notes-status';
-import classNames from 'classnames';
+
+import styles from './table-header.module.scss';
 
 interface ITableHeaderProps {
   titleList: string[];
@@ -47,7 +50,7 @@ const TableHeader: React.FC<ITableHeaderProps> = ({
       {titleList.length > 0 &&
         titleList.map((el) => {
           return (
-            <p key={el} className={styles.header__description}>
+            <p key={uuidv4()} className={styles.header__description}>
               {el}
             </p>
           );

@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
+import { useDispatch, useSelector,useForm, SubmitHandler } from '../../hooks/hooks';
 import { Button } from '../common/button/button';
 import { IconsSrc } from '../../common/enums/icons-src';
 import { NotesStatus } from '../../common/enums/notes-status';
@@ -9,7 +9,6 @@ import { addNote, editNote } from '../../redux/slices/notes-slice';
 import { CreateMode } from '../../common/enums/create-mode';
 import { TDevelopMode } from '../../common/types/note.type';
 import { RootState } from '../../redux/store';
-import { useForm, SubmitHandler } from '../../hooks/hooks';
 import { ExceptionMessage } from '../../common/enums/exception-message';
 
 import styles from './form.module.scss';

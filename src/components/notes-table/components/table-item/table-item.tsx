@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import classNames from 'classnames';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../../../../hooks/hooks';
 import {
   changeNoteStatus,
   deleteNote,
@@ -15,9 +15,10 @@ import editingIcon from '../../../../assets/editing.png';
 import archiveIcon from '../../../../assets/archive.png';
 import deleteIcon from '../../../../assets/delete.png';
 
-import styles from './table-item.module.scss';
 import { NotesStatus } from '../../../../common/enums/notes-status';
 import { TDevelopMode } from '../../../../common/types/note.type';
+
+import styles from './table-item.module.scss';
 
 type TTableItemProps = {
   id: string;
