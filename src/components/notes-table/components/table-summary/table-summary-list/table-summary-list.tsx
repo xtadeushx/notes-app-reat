@@ -1,12 +1,15 @@
-import classNames from 'classnames';
-import styles from './table-summary-list.module.scss';
-import { Image } from '../../../../common/image/image';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../../../redux/store';
+import classNames from 'classnames';
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+
+import { Image } from '../../../../common/image/image';
+import { RootState } from '../../../../../redux/store';
+import { useEffect, useState } from '../../../../../hooks/hooks';
 import { IconsSrc } from '../../../../../common/enums/icons-src';
 import { countItemsByCategoryStatus } from '../../../../../utils/status-counter';
+
+import styles from './table-summary-list.module.scss';
+
 type IconsSrcType = keyof typeof IconsSrc;
 
 const TableSummaryList = () => {

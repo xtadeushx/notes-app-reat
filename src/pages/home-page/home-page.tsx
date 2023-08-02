@@ -19,6 +19,7 @@ const HomePage: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
   const [mode, setMode] = useState<TDevelopMode>(CreateMode.CREATE);
   const [currentId, setCurrentId] = useState<string>('1');
+
   const handelOpen = () => setOpen((prev) => !prev);
   const handelMode = (currentMode: TDevelopMode) => setMode(currentMode);
   const handelId = (id: string) => {
@@ -49,7 +50,6 @@ const HomePage: React.FC = () => {
           >
             Create note
           </Button>
-
           <NotesTable isSummaryTable={true}>
             <>
               <TableHeader titleList={TITLE_LIST_SUMMARy} withButtons={false} />

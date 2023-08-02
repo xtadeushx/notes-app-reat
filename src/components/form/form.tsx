@@ -1,7 +1,7 @@
-import styles from './form.module.scss';
-import { Button } from '../common/button/button';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+
+import { Button } from '../common/button/button';
 import { IconsSrc } from '../../common/enums/icons-src';
 import { NotesStatus } from '../../common/enums/notes-status';
 import { formatDateLong, formatDateShort } from '../../utils/date-helper';
@@ -10,6 +10,9 @@ import { CreateMode } from '../../common/enums/create-mode';
 import { TDevelopMode } from '../../common/types/note.type';
 import { RootState } from '../../redux/store';
 import { useForm, SubmitHandler } from '../../hooks/hooks';
+import { ExceptionMessage } from '../../common/enums/exception-message';
+
+import styles from './form.module.scss';
 
 const SELECT__OPTIONS = [
   { id: 1, value: 'task', text: 'Task' },
@@ -44,7 +47,11 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
     mode: 'onBlur',
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = (data: {
+    category: string;
+    name: string;
+    content: string;
+  }) => {
     if (mode === 'create') {
       const newNote = {
         id: uuidv4(),
@@ -82,18 +89,21 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
         <input
           className={styles.input}
           {...register('name', {
-            required: 'field is required',
-            maxLength: 20,
+            required: ExceptionMessage.REQUIRED__FIELD,
+            maxLength: {
+              value: 20,
+              message: ExceptionMessage.MAX_LENGTH,
+            },
             minLength: {
               value: 5,
-              message: 'Min length must be greater than 5 characters',
+              message: ExceptionMessage.MAX_LENGTH,
             },
           })}
         />
         <div className="error__field">
           {errors?.name && (
             <p className={styles.error__message}>
-              {errors?.name.message || 'Error'}
+              {errors?.name.message || ExceptionMessage.UNKNOWN_ERROR}
             </p>
           )}
         </div>
@@ -115,28 +125,25 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
         <input
           className={styles.input}
           {...register('content', {
-            required: 'field is required',
-            maxLength: 20,
+            required: ExceptionMessage.REQUIRED__FIELD,
+            maxLength: {
+              value: 30,
+              message: ExceptionMessage.MAX_LENGTH,
+            },
             minLength: {
               value: 5,
-              message: 'Min length must be greater than 5 characters',
+              message: ExceptionMessage.MAX_LENGTH,
             },
           })}
         />
         <div className="error__field">
           {errors?.content && (
             <p className={styles.error__message}>
-              {errors?.content.message || 'Error'}
+              {errors?.content.message || ExceptionMessage.UNKNOWN_ERROR}
             </p>
           )}
         </div>
       </label>
-      {mode === 'edit' && (
-        <label className={styles['label']}>
-          Date
-          <input className={styles.input} type="date" {...register('date')} />
-        </label>
-      )}
       <Button type="submit" className={styles.add__note}>
         {mode === CreateMode.CREATE ? 'Add note' : 'Edit note'}
       </Button>
