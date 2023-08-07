@@ -15,7 +15,7 @@ import {
 import { TStatus } from '../../../../common/types/note.type';
 import { NotesStatus } from '../../../../common/enums/notes-status';
 
-import styles from './table-header.module.scss';
+// import styles from './table-header.module.scss';
 
 interface ITableHeaderProps {
   titleList: string[];
@@ -43,14 +43,14 @@ const TableHeader: React.FC<ITableHeaderProps> = ({
   return (
     <div
       className={classNames({
-        [styles.table__header]: true,
-        [styles.header__summary]: !withButtons,
+        'py-2 px-3 w-full bg-gray-500 text-white w-full grid grid-cols-6 grid-rows-auto items-center': true,
+        'bg-gray-500 w-full grid-flow-row grid-cols-3 items-center': !withButtons,
       })}
     >
       {titleList.length > 0 &&
         titleList.map((el) => {
           return (
-            <p key={uuidv4()} className={styles.header__description}>
+            <p key={uuidv4()}>
               {el}
             </p>
           );
