@@ -1,10 +1,9 @@
 import clsx from 'clsx';
 import { TImageProps } from './types';
-import styles from './image.module.scss';
 
 const Image = ({ alt, className, src, width }: TImageProps) => (
   <img
-    className={clsx(styles.image, className)}
+    className={clsx('max-w-full object-contain', className)}
     width={width}
     src={src}
     alt={alt}
