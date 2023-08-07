@@ -14,7 +14,7 @@ const Button = ({
   return (
     <button
       data-test-id={dataTestId}
-      className={clsx("w-7 cursor-pointer border-none bg-transparent hover:scale-110 object-contain ", className)}
+      className={clsx("w-7 cursor-pointer  bg-transparent hover:scale-110 object-contain ", className)}
       type={type}
       onClick={onClick}
       {...rest}

@@ -1,6 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { useDispatch, useSelector,useForm, SubmitHandler } from '../../hooks/hooks';
+import {
+  useDispatch,
+  useSelector,
+  useForm,
+  SubmitHandler,
+} from '../../hooks/hooks';
 import { Button } from '../common/button/button';
 import { IconsSrc } from '../../common/enums/icons-src';
 import { NotesStatus } from '../../common/enums/notes-status';
@@ -11,7 +16,6 @@ import { TDevelopMode } from '../../common/types/note.type';
 import { RootState } from '../../redux/store';
 import { ExceptionMessage } from '../../common/enums/exception-message';
 
-import styles from './form.module.scss';
 
 const SELECT__OPTIONS = [
   { id: 1, value: 'task', text: 'Task' },
@@ -82,11 +86,11 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <label className={styles['label']}>
+    <form className={'flex flex-col items-start justify-start w-full'} onSubmit={handleSubmit(onSubmit)}>
+      <label className={'w-full my-2 mx-0'}>
         Name
         <input
-          className={styles.input}
+          className={'w-full my-2 mx-0'}
           {...register('name', {
             required: ExceptionMessage.REQUIRED__FIELD,
             maxLength: {
@@ -101,15 +105,15 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
         />
         <div className="error__field">
           {errors?.name && (
-            <p className={styles.error__message}>
+            <p className={'text-xl text-red-400'}>
               {errors?.name.message || ExceptionMessage.UNKNOWN_ERROR}
             </p>
           )}
         </div>
       </label>
-      <label className={styles['label']}>
+      <label className={'w-full my-2 mx-0'}>
         Category
-        <select className={styles['select']} {...register('category')}>
+        <select className={'w-full py-1 px-0'} {...register('category')}>
           {SELECT__OPTIONS.map((el) => {
             return (
               <option key={el.id} value={el.value}>
@@ -119,10 +123,10 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
           })}
         </select>
       </label>
-      <label className={styles['label']}>
+      <label className={'w-full my-2 mx-0'}>
         Content
         <input
-          className={styles.input}
+          className={'w-full my-2 mx-0'}
           {...register('content', {
             required: ExceptionMessage.REQUIRED__FIELD,
             maxLength: {
@@ -137,13 +141,13 @@ const Form: React.FC<IFormProps> = ({ mode, handelOpen, currentId }) => {
         />
         <div className="error__field">
           {errors?.content && (
-            <p className={styles.error__message}>
+            <p className={'text-xl text-red-400'}>
               {errors?.content.message || ExceptionMessage.UNKNOWN_ERROR}
             </p>
           )}
         </div>
       </label>
-      <Button type="submit" className={styles.add__note}>
+      <Button type="submit" className=' w-[80px] p-1 cursor-pointer justify-center mt-3  border-gray-500 border-2 border-solid rounded-[5px] text-color-grey-500'>
         {mode === CreateMode.CREATE ? 'Add note' : 'Edit note'}
       </Button>
     </form>

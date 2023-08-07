@@ -1,4 +1,3 @@
-import styles from './select.module.scss';
 import { TSelectProps } from './types';
 
 const Select = ({
@@ -10,14 +9,14 @@ const Select = ({
   ...rest
 }: TSelectProps) => {
   return (
-    <label className={styles['label']}>
+    <label className={'w-full'}>
       {title}
       <select
         value={value}
         name={name}
         onChange={onchange}
         {...rest}
-        className={styles['select']}
+        className={'w-full py-1 px-10 my-10 mx-0'}
       >
         {optionList.map((el) => {
           return (
