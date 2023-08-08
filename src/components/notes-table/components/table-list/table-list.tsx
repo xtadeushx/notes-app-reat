@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { TableItem } from '../table-item/table-item';
-import styles from './table-list.module.scss';
 import { RootState } from '../../../../redux/store';
 import { TDevelopMode } from '../../../../common/types/note.type';
 
@@ -18,7 +17,7 @@ const TableList: React.FC<ITableListProps> = ({
   const { notesList } = useSelector((state: RootState) => state.notes);
 
   return (
-    <ul className={styles.table__list}>
+    <ul className='table__list'>
       {notesList && notesList.length > 0 ? (
         notesList.map((note) => {
           return (
