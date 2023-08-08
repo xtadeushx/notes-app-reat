@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
         <div className="container">
           <NotesTable isSummaryTable={false}>
             <>
-              <TableHeader titleList={TITLE_LIST} withButtons />
+              <TableHeader titleList={TITLE_LIST} withButtons classList='grid-cols-6' />
               <TableList
                 handelMode={handelMode}
                 handelOpen={handelOpen}
@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
           </Button>
           <NotesTable isSummaryTable={true}>
             <>
-              <TableHeader titleList={TITLE_LIST_SUMMARy} withButtons={false} />
+              <TableHeader titleList={TITLE_LIST_SUMMARy} withButtons={false} classList='grid-cols-3' />
               <TableSummaryList />
             </>
           </NotesTable>

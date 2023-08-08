@@ -58,12 +58,12 @@ const TableItem: React.FC<TTableItemProps> = ({
   return (
     <li
       className={classNames({
-        'my-2 mx-0 py-1 px-3 w-full bg-cyan-200 grid grid-cols-6 items-center': true,
+        'my-3 mx-0 py-2 px-3 bg-cyan-200 w-full grid grid-cols-6 items-center': true,
         'bg-gray-300 decoration-clone': status === NotesStatus.ARCHIVED,
       })}
     >
-      <div className='flex justify-start items-center w-[200px] overflow-hidden gap-3 whitespace-nowrap'>
-        <span className='block w-[30px] p-1 rounded-1/2  bg-gray-400'>
+      <div className='flex justify-start items-center w-[200px] overflow-hidden gap-3 whitespace-nowrap text-ellipsis '>
+        <span className='block w-[30px] p-1 rounded-[50%]  bg-gray-500'>
           <Image
             src={src}
             alt={category}
@@ -71,7 +71,7 @@ const TableItem: React.FC<TTableItemProps> = ({
             className={clsx('w-full w-[30] text-color-black', 'button--light')}
           />
         </span>
-        <span className={'capitalize overflow-hidden text-ellipsis'}>{title}</span>
+        <span className={'capitalize overflow-hidden text-ellipsis max-w-[100px]'}>{title}</span>
       </div>
       <p className="item__createdAt">{createdAt}</p>
       <p className={'capitalize'}>{category}</p>
