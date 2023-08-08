@@ -9,7 +9,7 @@ const NotesTable: React.FC<INoteTable> = ({ children, isSummaryTable }) => {
   return (
     <div
       className={classNames({
-        'w-full mt-[50px] mb-[20px]': true,
+        'w-full mt-[10px] mb-[10px]': true,
         'text-black': isSummaryTable,
       })}
     >

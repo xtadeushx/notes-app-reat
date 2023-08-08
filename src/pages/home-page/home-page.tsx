@@ -13,7 +13,6 @@ import { TableSummaryList } from '../../components/notes-table/components/table-
 import { NotesTable } from '../../components/notes-table/notes-table';
 import { useState } from '../../hooks/hooks';
 
-import styles from './home-page.module.scss';
 
 const HomePage: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
@@ -28,7 +27,7 @@ const HomePage: React.FC = () => {
   };
   return (
     <>
-      <main className={styles.main}>
+      <main className='w-full flex justify-center self-start items-start'>
         <div className="container">
           <NotesTable isSummaryTable={false}>
             <>
@@ -42,7 +41,7 @@ const HomePage: React.FC = () => {
           </NotesTable>
           <Button
             type="button"
-            className={styles.add__note}
+            className='p-2 cursor-pointer justify-end mt-3 mb-10 border-2 border-solid border-gray-500 w-[100px] rounded-[5px] text-color-gray-500'
             onClick={() => {
               handelOpen();
               handelMode(CreateMode.CREATE);

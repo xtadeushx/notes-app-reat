@@ -14,11 +14,6 @@ html {
 }
 
 :root {
-  --primary-color: #fff;
-  --secondary-color: #000000;
-  --background-color: #ebe8e8;
-  --header-background-color: #5e5c5c;
-  --secondary-background-color: rgb(186 225 243);
   --primary-font: 'Arial';
   --secondary-font: 'Montserrat', sans-serif;
 }
