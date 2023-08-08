@@ -8,7 +8,6 @@ import { useEffect, useState } from '../../../../../hooks/hooks';
 import { IconsSrc } from '../../../../../common/enums/icons-src';
 import { countItemsByCategoryStatus } from '../../../../../utils/status-counter';
 
-import styles from './table-summary-list.module.scss';
 
 type IconsSrcType = keyof typeof IconsSrc;
 
@@ -22,7 +21,7 @@ const TableSummaryList = () => {
   }, [notesList]);
 
   return (
-    <ul className={styles.table__list}>
+    <ul className='table__list'>
       {summary &&
         summary.length > 0 &&
         summary.map((note) => {
@@ -30,11 +29,11 @@ const TableSummaryList = () => {
             <li
               key={note.category}
               className={classNames({
-                [styles.item]: true,
+                'my-3 mx-0 py-2 px-3 bg-cyan-200 w-full grid grid-cols-3 items-center': true,
               })}
             >
-              <div className={styles.img__container}>
-                <span className={styles.img__wrapper}>
+              <div className='flex justify-start items-center w-52 whitespace-nowrap overflow-hidden gap-2'>
+                <span className='block w-[30px] p-1 rounded-[50%]  bg-gray-500'>
                   <Image
                     src={
                       IconsSrc[note.category.toUpperCase() as IconsSrcType] ||
@@ -42,13 +41,13 @@ const TableSummaryList = () => {
                     }
                     alt={note.category}
                     width={30}
-                    className={clsx(styles.item__img, 'button--light')}
+                    className={clsx('max-w-full w-[30px] text-black', 'button--light')}
                   />
                 </span>
-                <span className={styles.item__title}>{note.category}</span>
+                <span className='capitalize overflow-hidden text-ellipsis'>{note.category}</span>
               </div>
-              <p className={styles.item__category}>{note.archived}</p>
-              <p className={styles.item__category}>{note.active}</p>
+              <p className='capitalize'>{note.archived}</p>
+              <p className='capitalize'>{note.active}</p>
             </li>
           );
         })}

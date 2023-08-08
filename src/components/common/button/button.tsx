@@ -2,7 +2,6 @@ import clsx from 'clsx';
 
 import { TButtonProps } from './types';
 
-import styles from './button.module.scss';
 
 const Button = ({
   children,
@@ -15,7 +14,7 @@ const Button = ({
   return (
     <button
       data-test-id={dataTestId}
-      className={clsx(styles.button, className)}
+      className={clsx("w-7 cursor-pointer  bg-transparent hover:scale-110 object-contain ", className)}
       type={type}
       onClick={onClick}
       {...rest}

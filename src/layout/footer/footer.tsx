@@ -1,13 +1,12 @@
-import styles from './footer.module.scss';
 
 const Footer: React.FC = () => {
   return (
-    <footer className={styles.footer}>
-      <div className="container">
+    <footer className='flex justify-center w-full'>
+      <div className="container flex justify-center">
         <a
           href="https://github.com/xtadeushx/notes-app"
           target="_blank"
-          className={styles.footer__link}
+          className='block align-center decoration-none text-black'
         >
           @ xtadeushx 2023
         </a>

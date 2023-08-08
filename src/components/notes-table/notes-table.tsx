@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import styles from './notes-table.module.scss';
 
 interface INoteTable {
   children: React.ReactElement;
@@ -10,8 +9,8 @@ const NotesTable: React.FC<INoteTable> = ({ children, isSummaryTable }) => {
   return (
     <div
       className={classNames({
-        [styles.table]: true,
-        [styles.table__summary]: isSummaryTable,
+        'w-full mt-[10px] mb-[10px]': true,
+        'text-black': isSummaryTable,
       })}
     >
       {children}

@@ -2,7 +2,6 @@ import { FC } from 'react';
 
 import { TInputProps } from './types';
 
-import styles from './input.module.scss';
 
 const Input: FC<TInputProps> = ({
   name,
@@ -14,7 +13,8 @@ const Input: FC<TInputProps> = ({
   ...rest
 }) => {
   return (
-    <label className={styles.label}>
+    <label
+      className='w-full placeholder:opacity-40'>
       {text}
       <input
         type={type}
@@ -22,7 +22,7 @@ const Input: FC<TInputProps> = ({
         required={required}
         value={value}
         onChange={onChange}
-        className={styles['input']}
+        className='w-full py-1 px-2 my-2 mx-0 bg-white'
         {...rest}
       />
     </label>

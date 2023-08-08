@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import deleteIcon from '../../../../assets/delete.png';
@@ -14,17 +13,18 @@ import {
 
 import { TStatus } from '../../../../common/types/note.type';
 import { NotesStatus } from '../../../../common/enums/notes-status';
-
-import styles from './table-header.module.scss';
+import clsx from 'clsx';
 
 interface ITableHeaderProps {
   titleList: string[];
   withButtons: boolean;
+  classList: string
 }
 
 const TableHeader: React.FC<ITableHeaderProps> = ({
   titleList,
   withButtons,
+  classList
 }) => {
   const [currentStatus, setCurrentStatus] = useState<TStatus>(
     NotesStatus.ARCHIVED
@@ -42,15 +42,12 @@ const TableHeader: React.FC<ITableHeaderProps> = ({
   };
   return (
     <div
-      className={classNames({
-        [styles.table__header]: true,
-        [styles.header__summary]: !withButtons,
-      })}
+      className={clsx(classList, 'py-2 px-3 w-full bg-gray-500 text-white grid items-center')}
     >
       {titleList.length > 0 &&
         titleList.map((el) => {
           return (
-            <p key={uuidv4()} className={styles.header__description}>
+            <p key={uuidv4()}>
               {el}
             </p>
           );

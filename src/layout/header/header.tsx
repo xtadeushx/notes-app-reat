@@ -1,9 +1,8 @@
-import styles from './header.module.scss';
 
 const Header: React.FC = () => {
   return (
-    <header className={styles.header}>
-      <h2 className={styles.title}>Note App</h2>
+    <header className='header'>
+      <h1 className='text-center my-3 mx-0 text-4xl font-bold'>Note App</h1>
     </header>
   );
 };
